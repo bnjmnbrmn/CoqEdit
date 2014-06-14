@@ -1,0 +1,53 @@
+CoqEdit ToDos:
+
+Block/handle (i.e. send error messages) settings commands, "Quit" + ??? (need a list of these).  
+Wrapper side.
+
+Method body for moving evaluated region to cursor.
+Listener side.
+
+Process output/determine output panel on listener side.
+Need to fix bug where top window keeps its text when it shouldn't.
+Listener side.
+
+Allow for multiple coqtop wrappers.
+Allow for coqtop wrapper restarting.
+Deal with changes in focus (i.e. add the ability to switch between windows).
+Listener side.
+Make options panel restart coqtop wrappers when resetting coqtop path.
+Listener side.
+
+Output caching.
+Caching visualization.
+Architecture for these?
+
+ProofPreviews Backend Bug fixing...
+
+Auto-open dockable
+auto move cursor when moving highlighting and when asking for suggestions in proof previews
+GUI side
+
+FIX/FIND BUGS (not sure how many of these still exist)
+"Last sentence" bug (???).
+
+
+Interactive script to compile/setup?
+Ben can do this.
+
+Keyword highlighting.
+Coordinate (Ben just needs a list, probably grouped into up to 4 categories). 
+
+
+
+LESS CRITICAL:
+
+Programmatically add keyboard shortcuts.
+
+Allow invisible commands to be sent to coqtop...
+
+Error highlighting.
+
+A way to make sure that attempted changes to the evaluated section do not affect
+whether or not the file is "saved".
+
+Buffer compilation.

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE ACTIONS SYSTEM "actions.dtd">
+
+<ACTIONS>
+	<ACTION NAME="coqedit.next-sentence">
+		<CODE>
+			coqEditPlugin = edu.uiowa.cs.coqedit.CoqEditPlugin.getInstance();
+			coqEditPlugin.forwardOneSentence();
+		</CODE>
+	</ACTION>
+	<ACTION NAME="coqedit.previous-sentence">
+		<CODE>
+			coqEditPlugin = edu.uiowa.cs.coqedit.CoqEditPlugin.getInstance();
+			coqEditPlugin.backOneSentence();
+		</CODE>
+	</ACTION>
+	<ACTION NAME="coqedit.to-cursor">
+		<CODE>
+			coqEditPlugin = edu.uiowa.cs.coqedit.CoqEditPlugin.getInstance();
+			coqEditPlugin.goToCursor();
+		</CODE>
+	</ACTION>
+	<ACTION NAME="coqedit.to-start">
+		<CODE>
+			coqEditPlugin = edu.uiowa.cs.coqedit.CoqEditPlugin.getInstance();
+			coqEditPlugin.goToStart();
+		</CODE>
+	</ACTION>
+	<ACTION NAME="coqedit.to-end">
+		<CODE>
+			coqEditPlugin = edu.uiowa.cs.coqedit.CoqEditPlugin.getInstance();
+			coqEditPlugin.goToEnd();
+		</CODE>
+	</ACTION>
+	<ACTION NAME="coqedit.interrupt">
+		<CODE>
+			coqEditPlugin = edu.uiowa.cs.coqedit.CoqEditPlugin.getInstance();
+			coqEditPlugin.interruptEvaluation();
+		</CODE>
+	</ACTION>
+</ACTIONS>

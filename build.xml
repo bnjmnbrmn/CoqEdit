@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<project name="CoqEdit" default="dist" basedir=".">
+	<!--
+	<property name="jedit.install.dir" value="../.."/>
+	-->
+	<property name="jedit.install.dir" value="jEdit_Install" />
+	
+	<property name="jar.name" value="${ant.project.name}.jar"/>
+	
+	<property name="build.num" value="0.1"/>
+
+	<!--
+	<property name="install.dir" value=".." />
+	-->
+	<property name="install.dir" value="jEdit_Settings" />
+	
+	<property name="src.dir" location="." />
+	<mkdir dir="${src.dir}"/>
+	
+	<!-- temporary directory for post-compile processing -->
+	<property name="build.dir" location="build"/>
+	<mkdir dir="${build.dir}"/>
+	
+	<property name="classes.dir" location="${build.dir}/classes" />
+	<mkdir dir="${classes.dir}"/>
+	
+	<target name="init" description="Create directory structure.">
+			<fail unless="jedit.install.dir" 
+			message="Please set jedit.install.dir property."/>
+			<mkdir dir="${src.dir}" />
+			<mkdir dir="${classes.dir}" />
+	</target>
+	
+	<target name="setClasspath">
+			<path id="classpathref">
+					 <!-- required locations/jars -->
+					<pathelement location="${classes.dir}" />
+					<pathelement path="${java.class.path}"/>
+	
+					<!-- required for jEdit plugin -->
+					<pathelement location="${jedit.install.dir}/jedit.jar" />
+			</path>
+	</target>
+	
+	<target name="compile"
+					description="Compile"
+					depends="init,setClasspath">
+			<javac deprecation="on"
+							debug="on"
+							nowarn="off"
+							destdir="${classes.dir}"
+							srcdir="${src.dir}/edu"
+							target="1.6"
+							source="1.6">
+					<classpath refid="classpathref" />
+					<compilerarg value="-Xlint:unchecked"/>
+			</javac>
+	</target>
+	
+	<target name="dist"
+					description="Compiles, jars, puts the jar in the jEdit jars directory."
+					depends="clean,init,compile,prep_files">
+	
+	
+			<!-- make the plugin jar file -->
+			<tstamp/>
+			<!--
+			<jar jarfile="${install.dir}/${ant.project.name}.jar">
+			-->
+			<jar jarfile="${install.dir}/jars/${ant.project.name}.jar">
+					<manifest>
+							<attribute name="AppName" value="${ant.project.name}" />
+							<attribute name="Created-By" value="${user.name}" />
+							<attribute name="Created-On" value="${TODAY}"/>
+					</manifest>
+	
+					<!-- include everything in the build directory -->
+					<fileset dir="${classes.dir}">
+							<include name="**/*" />
+					</fileset>
+			</jar>
+	
+			
+	
+	</target>
+	
+	<target name="prep_files">
+			<!-- copy the config  files to deployment directory
+			CHANGED: apparently, having a 'src/config' directory to hold the configuration
+			files is too confusing, so now they are dumped in basedir, along with
+			any other crud that may or may not be part of the deployment package.
+			Now need to explicitly name the proper files, so we don't pick up the
+			crud.
+			-->
+			<copy todir="${classes.dir}">
+					<fileset dir="${basedir}">
+							<include name="CoqEdit.props"/>
+							<include name="actions.xml"/>
+							<include name="dockables.xml"/>
+					</fileset>
+			</copy>
+	</target>
+	
+	<target name="clean" description="Delete all files from the classes directory.">
+			<!-- delete old directories that may still be hanging around.  These
+			caused some confusion. -->
+			<delete dir="${classes.dir}"/>
+			<delete dir="${build.dir}"/>
+			<mkdir dir="${classes.dir}"/>
+			<mkdir dir="${build.dir}"/>
+	</target>
+	
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE DOCKABLES SYSTEM "dockables.dtd">
+
+<DOCKABLES>
+	<DOCKABLE NAME="coqeditoutput" MOVABLE="TRUE">
+		<!--new edu.uiowa.cs.coqedit.OutputPanel(view, position);-->
+		<!--Macros.message(view,"Hello world");-->
+		<!--new javax.swing.JPanel();-->
+		new edu.uiowa.cs.coqedit.BasicCoqEditOutputPanelHolderImpl(view);
+	</DOCKABLE>
+</DOCKABLES>

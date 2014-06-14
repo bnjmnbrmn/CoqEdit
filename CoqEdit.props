@@ -1,0 +1,46 @@
+# Properties file for CoqEdit
+
+# jEdit only needs to load the plugin the first time the user accesses it
+# the presence of this property also tells jEdit the plugin is using the new API
+#plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.activate=defer
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.activate=startup
+
+# These two properties are required for all plugins
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.name=CoqEdit
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.author=Benjamin Berman and Harley Eades
+
+# description
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.description=A Plugin for the Coq ITP
+
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.version=0.1
+
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.depend.0=jedit 04.05.02.00
+
+# plugin menu
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.menu=coqeditoutput - \
+coqedit.next-sentence \
+coqedit.previous-sentence \
+coqedit.to-cursor \
+coqedit.to-start \
+coqedit.to-end \
+coqedit.interrupt
+
+# labels for menu
+coqeditoutput.label=Show CoqEdit Output Panel
+coqedit.next-sentence.label=Forward one sentence
+coqedit.previous-sentence.label=Back one sentence
+coqedit.to-cursor.label=Go to cursor
+coqedit.to-start.label=Go to start
+coqedit.to-end.label=Go to end
+coqedit.interrupt.label=Interrupt evaluation
+
+#dockable window name
+coqeditoutput.title=CoqEdit Output
+
+#plugin option pane
+plugin.edu.uiowa.cs.coqedit.CoqEditPlugin.option-pane=coqeditoptionpane
+options.coqeditoptionpane.label=CoqEdit
+options.coqeditoptionpane.code=new edu.uiowa.cs.coqedit.CoqEditOptionPane();
+
+#options
+options.coqedit.coqtoppath=/Applications/CoqIdE_8.4.app/Contents/Resources/bin/coqtop

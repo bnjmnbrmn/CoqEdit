@@ -1,0 +1,51 @@
+INSTALLATION STEPS:
+
+1) Create the following two symbolic links in the same directory as build.xml:
+	a) "jEdit_Install", linking to the directory containing jedit.jar.
+	
+	(On Mac OSX, for example, this might be:
+	ln -s /Applications/jEdit.app/Contents/Resources/Java/ jEdit_Install
+	)
+	
+	b) "jEdit_Settings", linking to the jEdit settings directory, which can 
+	be found by opening jEdit and going to Utilities -> Settings Directory.
+	
+	(On Mac OSX, for example, this might be:
+	ln -s ~/Library/jEdit/ jEdit_Settings
+	)
+
+2) Edit "CoqEdit.props".  The property "options.coqedit.coqtoppath" needs to be
+set to the full path for coqtop.
+(On Mac OSX, for example, this might be:
+options.coqedit.coqtoppath=/Applications/CoqIdE_8.4.app/Contents/Resources/bin/coqtop
+)
+
+3) Run "ant" in the build.xml directory. This has been tested using Apache
+Ant(TM) version 1.8.4.
+
+4) Add Coq Vernacular highlighting.  This is a two step process:
+	a) Copy the coq.xml into jEdit_Settings/modes/
+	(  e.g.
+	cp coq.xml ./jEdit_Settings/modes/ 
+	)
+	b) Add the following line to jEdit_Settings/modes/catalog, between the
+	<MODES> and </MODES> tags:
+	<MODE NAME="coq" FILE="coq.xml" FILE_NAME_GLOB="*.v" />
+	
+
+	
+TO RUN:
+
+In jEdit, go to Plugins -> Plugin Manager... and check the CoqEdit.jar checkbox. 
+(You can uncheck and recheck this checkbox to reload the plugin.)  To get the
+output panels to appear, you can now go to Plugins -> CoqEdit -> Show CoqEdit
+Output Panel.  
+
+You may have to dock this on the right side of the jEdit window
+by clicking on the downward pointing triangle in the top left corner.  You may
+also have to adjust the ratio of space given to the top and bottom panes by
+dragging the small dot between the two.
+
+To add shortcuts to the CoqEdit plugin menu options, go to Utilities -> Global
+Options... and then click on "Shortcuts" in the panel on the left.  (The Filter
+box is very helpful here.)
