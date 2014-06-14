@@ -1,4 +1,10 @@
-INSTALLATION STEPS:
+This software works with jEdit 5.1 and Coq 8.4pl3.
+
+Note:  CoqEdit is not compatible with the MS Windows version of Coq 8.4.  The
+problem is in not being able to interrupt long-running (or non-terminating) 
+commands.
+
+INSTALLATION STEPS: 
 
 1) Create the following two symbolic links in the same directory as build.xml:
 	a) "jEdit_Install", linking to the directory containing jedit.jar.
@@ -14,7 +20,10 @@ INSTALLATION STEPS:
 	ln -s ~/Library/jEdit/ jEdit_Settings
 	)
 
-2) Edit "CoqEdit.props".  The property "options.coqedit.coqtoppath" needs to be
+2) Make sure that the path for coqtop is added to the PATH environment variable.
+
+Eventually part of the setup will be:
+Edit "CoqEdit.props".  The property "options.coqedit.coqtoppath" needs to be
 set to the full path for coqtop.
 (On Mac OSX, for example, this might be:
 options.coqedit.coqtoppath=/Applications/CoqIdE_8.4.app/Contents/Resources/bin/coqtop
