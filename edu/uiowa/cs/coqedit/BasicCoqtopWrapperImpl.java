@@ -24,13 +24,13 @@ import org.gjt.sp.jedit.jEdit;
  */
 public class BasicCoqtopWrapperImpl implements BasicCoqtopWrapper {
 	
-	private BasicCoqEditController coqEditController;
+	private BasicCoqEditPresenter coqEditController;
 	private Process coqtopProc;
 	private PrintWriter coqtopWriter;    // coqtop's writer (STDIN).
 	private BufferedReader coqtopReader; // coqtop's reader (STDOUT).
 	private final String prompt_regex = "<prompt>.*</prompt>"; // The coqtop prompt pattern.
 	
-	public BasicCoqtopWrapperImpl(BasicCoqEditController coqEditController) throws IOException{
+	public BasicCoqtopWrapperImpl(BasicCoqEditPresenter coqEditController) throws IOException{
 		this.coqEditController = coqEditController;
 		
 		ProcessBuilder coqtopProcBuilder = new ProcessBuilder("coqtop", "-emacs");

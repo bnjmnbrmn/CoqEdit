@@ -5,13 +5,13 @@ import org.gjt.sp.jedit.buffer.BufferAdapter;
 import org.gjt.sp.jedit.buffer.JEditBuffer;
 
 public class BufferLocker extends BufferAdapter {
-	private BasicCoqEditControllerImpl cep;
+	private BasicCoqEditPresenterImpl cep;
 	private int offsetToLockThrough = 0;
 	private boolean thisIsInsertingText = false;
 	private boolean thisIsRemovingText = false;
 	private String savedText;
 	
-	public BufferLocker(BasicCoqEditControllerImpl cep) {
+	public BufferLocker(BasicCoqEditPresenterImpl cep) {
 		this.cep = cep;	
 	}
 	

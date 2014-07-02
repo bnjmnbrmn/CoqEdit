@@ -21,12 +21,12 @@ import org.gjt.sp.jedit.jEdit;
  */
 public class BasicCoqtopRWRunnableImpl implements Runnable {
 
-	private BasicCoqEditController controller;
+	private BasicCoqEditPresenter controller;
 	private boolean looping;
 	private final BasicCoqtopWrapper coqtopWrapper;
 	private final BasicCoqEditModel model;
 
-	public BasicCoqtopRWRunnableImpl(BasicCoqEditController controller,
+	public BasicCoqtopRWRunnableImpl(BasicCoqEditPresenter controller,
 			BasicCoqtopWrapper coqtopWrapper, BasicCoqEditModel coqEditModel) {
 		this.controller = controller;
 		this.coqtopWrapper = coqtopWrapper;

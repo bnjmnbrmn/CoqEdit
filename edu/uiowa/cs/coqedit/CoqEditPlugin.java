@@ -33,9 +33,9 @@ public class CoqEditPlugin extends EBPlugin {
 	public static String OPTION_PREFIX = "options.coqedit.";
 	private static CoqEditPlugin INSTANCE;
 
-	private List<BasicCoqEditController> coqEditControllers = 
-		new ArrayList<BasicCoqEditController>();
-	private BasicCoqEditController currentCoqEditController;
+	private List<BasicCoqEditPresenter> coqEditControllers = 
+		new ArrayList<BasicCoqEditPresenter>();
+	private BasicCoqEditPresenter currentCoqEditController;
 	
 	private Map<View,BasicCoqEditOutputPanelHolder> outputPanelHolders = new HashMap<View,BasicCoqEditOutputPanelHolder>();
 	
@@ -54,7 +54,7 @@ public class CoqEditPlugin extends EBPlugin {
 	public void stop() {
 		//to do
 		
-		for (BasicCoqEditController coqEditController : coqEditControllers) {
+		for (BasicCoqEditPresenter coqEditController : coqEditControllers) {
 			coqEditController.getCoqEditView().removeHighlighters(); //remove sentenceHighlighters
 			
 			coqEditController.getBuffer().removeBufferListener(coqEditController);//remove bufferListener
@@ -74,7 +74,7 @@ public class CoqEditPlugin extends EBPlugin {
 			try {
 				Buffer currentBuffer = jEdit.getActiveView().getBuffer();
 				currentCoqEditController =
-					new BasicCoqEditControllerImpl(currentBuffer);
+					new BasicCoqEditPresenterImpl(currentBuffer);
 				currentCoqEditController.startRWThread();
 				coqEditControllers.add(currentCoqEditController);
 			} catch (IOException ex) {
@@ -215,8 +215,8 @@ public class CoqEditPlugin extends EBPlugin {
 		
 	}
 	
-	private BasicCoqEditController getProofController(Buffer buffer) {
-		for (BasicCoqEditController proofController : coqEditControllers) {
+	private BasicCoqEditPresenter getProofController(Buffer buffer) {
+		for (BasicCoqEditPresenter proofController : coqEditControllers) {
 			if (proofController.getBuffer().equals(buffer))
 				return proofController;
 		}
@@ -228,7 +228,7 @@ public class CoqEditPlugin extends EBPlugin {
 		Macros.message(jEdit.getActiveView(),msg);
 	}
 
-//	private void switchEvaluationBuffer(BasicCoqEditController pc) {
+//	private void switchEvaluationBuffer(BasicCoqEditPresenter pc) {
 //		currentProofController = pc;
 //		
 //		
@@ -261,7 +261,7 @@ public class CoqEditPlugin extends EBPlugin {
 		outputPanelHolders.put(view, outputHolder);
 	}
 
-	public BasicCoqEditController getCurrentController() {
+	public BasicCoqEditPresenter getCurrentController() {
 		return currentCoqEditController;
 	}
 

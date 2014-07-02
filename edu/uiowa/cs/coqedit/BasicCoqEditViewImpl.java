@@ -54,9 +54,9 @@ public class BasicCoqEditViewImpl implements BasicCoqEditView {
 		new HashMap<View,BasicCoqEditOutputPanel>();
 	
 	
-	private BasicCoqEditController controller;
+	private BasicCoqEditPresenter controller;
 	
-	public BasicCoqEditViewImpl(BasicCoqEditController controller) {
+	public BasicCoqEditViewImpl(BasicCoqEditPresenter controller) {
 		this.controller = controller;
 		buf = this.controller.getBuffer();
 		

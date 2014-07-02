@@ -29,7 +29,7 @@ import org.gjt.sp.jedit.textarea.TextAreaPainter;
  *
  * @author Benjamin Berman
  */
-public class BasicCoqEditControllerImpl implements BasicCoqEditController {
+public class BasicCoqEditPresenterImpl implements BasicCoqEditPresenter {
 
 	private Buffer buffer;
 	private BasicCoqEditModel coqEditModel;
@@ -38,7 +38,7 @@ public class BasicCoqEditControllerImpl implements BasicCoqEditController {
 	private Thread rwThread;
 	private BasicCoqtopWrapper coqtopWrapper;
 
-	public BasicCoqEditControllerImpl(Buffer buffer) throws IOException {
+	public BasicCoqEditPresenterImpl(Buffer buffer) throws IOException {
 		this.buffer = buffer;
 		this.coqEditModel = new BasicCoqEditModelImpl(this);
 		this.coqEditView = new BasicCoqEditViewImpl(this);
@@ -123,7 +123,7 @@ public class BasicCoqEditControllerImpl implements BasicCoqEditController {
 					textArea.moveCaretPosition(coqEditModel.getEndOffset(
 							coqEditModel.getLastQueuedSentenceNumber()), true);
 				} catch (NoOffsetForSentenceNumberException ex) {
-					//Logger.getLogger(BasicCoqEditControllerImpl.class.getName()).log(Level.SEVERE, null, ex);
+					//Logger.getLogger(BasicCoqEditPresenterImpl.class.getName()).log(Level.SEVERE, null, ex);
 				}
 
 				//pumsg("1");
@@ -623,7 +623,7 @@ public class BasicCoqEditControllerImpl implements BasicCoqEditController {
 				}
 
 				//update view
-				BasicCoqEditControllerImpl.this.updateCoqEditView();
+				BasicCoqEditPresenterImpl.this.updateCoqEditView();
 
 			}
 		}

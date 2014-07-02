@@ -10,7 +10,7 @@ public class SentenceOffsetFinder {
 	private View view; //For debugging
 	private Buffer buffer;
 	
-	public SentenceOffsetFinder(BasicCoqEditController proofController) {
+	public SentenceOffsetFinder(BasicCoqEditPresenter proofController) {
 		this.buffer = proofController.getBuffer();
 	}
 	

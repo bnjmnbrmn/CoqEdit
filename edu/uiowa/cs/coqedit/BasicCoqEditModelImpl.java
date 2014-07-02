@@ -19,7 +19,7 @@ import org.gjt.sp.jedit.jEdit;
 public class BasicCoqEditModelImpl implements BasicCoqEditModel {
 
 	private List<Integer> endOfSentenceOffsets = new ArrayList<Integer>();
-	private BasicCoqEditController controller;
+	private BasicCoqEditPresenter controller;
 	private Buffer buf;
 	private int currentlyViewingSentenceNumber;
 	private int lastEvaluatedSentenceNumber;
@@ -46,7 +46,7 @@ public class BasicCoqEditModelImpl implements BasicCoqEditModel {
 	private CoqtopResponseResponderFactory responseResponderFactory;
 	
 	
-	public BasicCoqEditModelImpl(BasicCoqEditController controller) {
+	public BasicCoqEditModelImpl(BasicCoqEditPresenter controller) {
 		this.controller = controller;
 		this.buf = controller.getBuffer();
 		

@@ -17,7 +17,7 @@ import org.gjt.sp.jedit.textarea.TextArea;
  *
  * @author bnjmnbrmn
  */
-public interface BasicCoqEditController extends BufferListener, CoqtopResponseResponderFactory {
+public interface BasicCoqEditPresenter extends BufferListener, CoqtopResponseResponderFactory {
 	public int forwardOneSentence();
 	public void backOneSentence();
 	public void goToCursor();
